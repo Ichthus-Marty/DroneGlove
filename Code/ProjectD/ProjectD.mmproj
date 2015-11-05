@@ -1,0 +1,11 @@
+<mm_project serial_port="" board="Arduino Uno" programmer="" includePaths="" libPaths="" libs="" default="no" useCodeAutomation="yes" linkPrintfVersion="1" serialPortSpeed="" >
+  <files>
+    <file name="ProjectD_main.cpp" open="no" />
+    <file name="projectd_main.h" open="no" />
+    <file name="gam.h" open="no" />
+  </files>
+  <extras>
+  </extras>
+  <externals>
+  </externals>
+</mm_project>
