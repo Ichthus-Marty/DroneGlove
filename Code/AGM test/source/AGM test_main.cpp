@@ -1,9 +1,9 @@
 /*************************************************************
-project: <type project name here>
+project: DroneGlove ~ Gyro, Accelero, Magneto meter
 author: <type your name here>
 description: <type what this file does>
 *************************************************************/
-
+//#include <arduino.h>
 #include "AGM test_main.h"
 
 // MPU-9150 Accelerometer + Gyro + Compass + Temperature
@@ -38,13 +38,14 @@ description: <type what this file does>
 // There are more Registervalues. Here are only the most
 // nessecary ones to get started with this sensor.
 
+
 #include <Wire.h>
 
 // Register names according to the datasheet.
 // According to the InvenSense document
 // "MPU-9150 Register Map and Descriptions Revision 4.0",
 
-#define MPU9150_SELF_TEST_X        0x0D   // R/W
+//#define MPU9150_SELF_TEST_X        0x0D   // R/W
 #define MPU9150_SELF_TEST_Y        0x0E   // R/W
 #define MPU9150_SELF_TEST_X        0x0F   // R/W
 #define MPU9150_SELF_TEST_A        0x10   // R/W
@@ -143,10 +144,8 @@ description: <type what this file does>
 #define MPU9150_CMPS_ZOUT_L        0x4E   // R
 #define MPU9150_CMPS_ZOUT_H        0x4F   // R
 
-
 // I2C address 0x69 could be 0x68 depends on your wiring. 
 int MPU9150_I2C_ADDRESS = 0x68;
-
 
 //Variables where our values can be stored
 int cmps[3];
@@ -154,12 +153,8 @@ int accl[3];
 int gyro[3];
 int temp;
 
-void setup()
-{      
-  // Initialize the Serial Bus for printing data.
-  Serial.begin(9600);
-
-  // Initialize the 'Wire' class for the I2C-bus.
+void setup(){
+	// Initialize the 'Wire' class for the I2C-bus.
   Wire.begin();
 
   // Clear the 'sleep' bit to start the sensor.
@@ -167,8 +162,6 @@ void setup()
 
   MPU9150_setupCompass();
 }
-
-
 void loop()
 {
   // Print all sensor values which the sensor provides

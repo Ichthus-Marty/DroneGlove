@@ -6,5 +6,7 @@
   <extras>
   </extras>
   <externals>
+    <external name="C:\Arduino\libraries\Wire\utility\twi.c" />
+    <external name="C:\Arduino\libraries\Wire\Wire.cpp" />
   </externals>
 </mm_project>
