@@ -1,11 +1,14 @@
-<mm_project serial_port="" board="Arduino Uno" programmer="" includePaths="" libPaths="" libs="" default="no" useCodeAutomation="yes" linkPrintfVersion="1" serialPortSpeed="" >
+<mm_project serial_port="COM11" board="Arduino Uno" programmer="" includePaths="" libPaths="" libs="" default="no" useCodeAutomation="yes" linkPrintfVersion="1" serialPortSpeed="" >
   <files>
-    <file name="ProjectD_main.cpp" open="no" />
+    <file name="ProjectD_main.cpp" open="yes" />
     <file name="projectd_main.h" open="no" />
-    <file name="gam.h" open="no" />
+    <file name="morse.h" open="yes" />
+    <file name="morse.cpp" open="yes" />
   </files>
   <extras>
   </extras>
   <externals>
+    <external name="C:\Arduino\libraries\Wire\utility\twi.c" />
+    <external name="C:\Arduino\libraries\Wire\Wire.cpp" />
   </externals>
 </mm_project>
