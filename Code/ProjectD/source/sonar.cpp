@@ -5,14 +5,12 @@ description: <type what this file does>
 *************************************************************/
 
 #include "Arduino.h"
-#include "Morse.h"
+#include "sonar.h"
 
 Sonar::Sonar(int pin)
 {
   pinMode(pin, OUTPUT);
   _pin = pin;
-  long _duration;
-  long _distance;
 }
 
 long Sonar::GetHeight()
