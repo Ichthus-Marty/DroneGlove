@@ -1,6 +1,6 @@
-<mm_project serial_port="COM11" board="Arduino Uno" programmer="" includePaths="C:\Arduino\libraries\Wire" libPaths="" libs="" default="yes" useCodeAutomation="yes" linkPrintfVersion="1" serialPortSpeed="" >
+<mm_project serial_port="COM11" board="Arduino Uno" programmer="" includePaths="C:\Arduino\libraries\Wire" libPaths="" libs="" default="no" useCodeAutomation="yes" linkPrintfVersion="1" serialPortSpeed="" >
   <files>
-    <file name="AGM test_main.cpp" open="yes" />
+    <file name="AGM test_main.cpp" open="no" />
     <file name="agm test_main.h" open="no" />
   </files>
   <extras>
@@ -8,5 +8,6 @@
   <externals>
     <external name="C:\Arduino\libraries\Wire\utility\twi.c" />
     <external name="C:\Arduino\libraries\Wire\Wire.cpp" />
+    <external name="C:\Arduino\libraries\Wire\Wire.h" />
   </externals>
 </mm_project>
