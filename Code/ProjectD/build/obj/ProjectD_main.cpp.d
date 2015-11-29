@@ -12,8 +12,7 @@
   C:\Arduino\hardware\arduino\cores\arduino/new.h \
   C:\Arduino\hardware\arduino\variants\standard/pins_arduino.h \
   c:\users\martijn\documents\github\droneglove\code\ProjectD\source\/ProjectD_main.h \
-  C:\Arduino\libraries\Wire\Wire.h \
-  C:\Arduino\hardware\arduino\cores\arduino/Stream.h \
+  C:\Arduino\libraries\Wire\utility/twi.h \
   c:\users\martijn\documents\github\droneglove\code\ProjectD\source/sonar.h \
   C:\Arduino\hardware\arduino\cores\arduino/Arduino.h \
   c:\users\martijn\documents\github\droneglove\code\ProjectD\source/gam_sensors.h

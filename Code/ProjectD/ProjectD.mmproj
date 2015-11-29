@@ -1,8 +1,8 @@
-<mm_project serial_port="COM11" board="Arduino Uno" programmer="" includePaths="" libPaths="" libs="" default="yes" useCodeAutomation="yes" linkPrintfVersion="1" serialPortSpeed="" >
+<mm_project serial_port="COM12" board="Arduino Uno" programmer="" includePaths="" libPaths="" libs="" default="yes" useCodeAutomation="yes" linkPrintfVersion="1" serialPortSpeed="" >
   <files>
     <file name="ProjectD_main.cpp" open="yes" />
-    <file name="projectd_main.h" open="yes" />
-    <file name="sonar.h" open="yes" />
+    <file name="projectd_main.h" open="no" />
+    <file name="sonar.h" open="no" />
     <file name="sonar.cpp" open="yes" />
     <file name="gam_sensors.cpp" open="yes" />
     <file name="gam_sensors.h" open="yes" />

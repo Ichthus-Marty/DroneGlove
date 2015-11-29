@@ -3,7 +3,7 @@ project: DroneGlove ~ Gyro, Accelero, Magneto meter
 author: <type your name here>
 description: <type what this file does>
 *************************************************************/
-//#include <arduino.h>
+#include <arduino.h>
 #include "AGM test_main.h"
 
 // MPU-9150 Accelerometer + Gyro + Compass + Temperature
@@ -157,11 +157,14 @@ void setup(){
 	// Initialize the 'Wire' class for the I2C-bus.
   Wire.begin();
 
+	Serial.begin(9600);
+	
   // Clear the 'sleep' bit to start the sensor.
   MPU9150_writeSensor(MPU9150_PWR_MGMT_1, 0);
 
   MPU9150_setupCompass();
 }
+
 void loop()
 {
   // Print all sensor values which the sensor provides
