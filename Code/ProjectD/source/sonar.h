@@ -8,10 +8,10 @@ class Sonar
   public:
     Sonar(int pin);
     long GetHeight();
-  private:
-    int _pin;
     long _duration;
     long _distance;
+  private:
+    int _pin;
 };
 
 #endif

@@ -3,7 +3,7 @@ project: DroneGlove ~ Gyro, Accelero, Magneto meter
 author: <type your name here>
 description: <type what this file does>
 *************************************************************/
-//#include <arduino.h>
+#include <arduino.h>
 #include "GAM_Sensors.h"
 
 // MPU-9150 Accelerometer + Gyro + Compass + Temperature
@@ -39,14 +39,14 @@ description: <type what this file does>
 // nessecary ones to get started with this sensor.
 
 
-//#include <Wire.h>
+#include <Wire.h>
 #include <C:\Arduino\libraries\Wire\Wire.h>
 
 // Register names according to the datasheet.
 // According to the InvenSense document
 // "MPU-9150 Register Map and Descriptions Revision 4.0",
 
-//#define MPU9150_SELF_TEST_X        0x0D   // R/W
+#define MPU9150_SELF_TEST_X        0x0D   // R/W
 #define MPU9150_SELF_TEST_Y        0x0E   // R/W
 #define MPU9150_SELF_TEST_X        0x0F   // R/W
 #define MPU9150_SELF_TEST_A        0x10   // R/W
@@ -157,14 +157,16 @@ int temp;
 */
 
 GAM_Sensors::GAM_Sensors(){
-		MPU9150_I2C_ADDRESS = 0x68;
+	
+MPU9150_I2C_ADDRESS = 0x68;
 // Initialize the 'Wire' class for the I2C-bus.
   Wire.begin();
-
+	
   // Clear the 'sleep' bit to start the sensor.
   MPU9150_writeSensor(MPU9150_PWR_MGMT_1, 0);
 
   MPU9150_setupCompass();
+  
 }
 
 void GAM_Sensors::GAM_Accel(int Accel[]){

@@ -1,0 +1,10 @@
+<mm_project serial_port="COM11" board="Arduino Uno" programmer="" includePaths="" libPaths="" libs="" default="no" useCodeAutomation="yes" linkPrintfVersion="1" serialPortSpeed="" >
+  <files>
+    <file name="Demo_Radio_Glove_main.cpp" open="no" />
+    <file name="demo_radio_glove_main.h" open="no" />
+  </files>
+  <extras>
+  </extras>
+  <externals>
+  </externals>
+</mm_project>
