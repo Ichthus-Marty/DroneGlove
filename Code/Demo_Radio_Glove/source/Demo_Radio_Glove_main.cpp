@@ -6,11 +6,13 @@ description: <type what this file does>
 
 #include "Demo_Radio_Glove_main.h"
 
-void setup() {                
-  Serial.begin(9600);  
+void setup() {  
+	pinMode(8, OUTPUT);  
+	digitalWrite(8, HIGH); 
+	Serial.begin(115200);  
 }
-
-void loop() {
-	Serial.write("Hello World!"); 
+void loop(){
+	Serial.print('1');
+	
 	delay(1000);
 }
