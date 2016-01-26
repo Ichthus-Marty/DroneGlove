@@ -11,7 +11,9 @@ RadioCoder::RadioCoder(){
   String radioSentCommand;
 };
 
-int RadioCoder::ReceiveDecode(int receivedCommands[5]){
+int RadioCoder::ReceiveDecode(int** p){
+//int RadioCoder::ReceiveDecode(int* p){
+//int RadioCoder::ReceiveDecode(TestVar){
   /*
    * The format of the radiomessages
    * 
@@ -27,7 +29,7 @@ int RadioCoder::ReceiveDecode(int receivedCommands[5]){
 
   if(Serial.available() > 0){
 
-	   //Extract the first string with commands (seperated by ';' from the Serial buffer and split it into the seperate commands 
+	   //Extract the first string with commands (seperated by ';') from the Serial buffer and split it into the seperate commands 
 	   radioReceiveBuffer = Serial.readStringUntil(';');
 
 	   for(int possition =0; possition<=radioReceiveBuffer.length(); possition++){
@@ -50,14 +52,16 @@ int RadioCoder::ReceiveDecode(int receivedCommands[5]){
       Serial.println(radioReceivedCommands[i]);
     }
     */
-	  receivedCommands = radioReceivedCommands;
+    
+	  *p = radioReceivedCommands;
     //Serial.println("Size of receivedCommands:");
     //Serial.println(sizeof(receivedCommands));
-    /*
+    
+    Serial.println("During loop value of receivedCommands");
     for(int i=0;i<5;i++){
-      Serial.println(receivedCommands[i]);
+      Serial.println(*p[i]);
     }
-    */
+    
    
 	  /*
 	  receivedCommands -> Throttle = radioReceivedCommands[1];
@@ -67,6 +71,9 @@ int RadioCoder::ReceiveDecode(int receivedCommands[5]){
 	  */
 
 	  return 1;
+  }
+  else{
+    return 0;
   }
 };
 void RadioCoder::EncodeSent(int sentCommands[5]){

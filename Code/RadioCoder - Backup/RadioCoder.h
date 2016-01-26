@@ -7,7 +7,7 @@ class RadioCoder
 {
   public:
     RadioCoder();
-    int ReceiveDecode(int receivedCommands[5]);
+    int ReceiveDecode(int** p);
     void EncodeSent(int sentCommands[5]);
     int receivedCommands[5];
   private:

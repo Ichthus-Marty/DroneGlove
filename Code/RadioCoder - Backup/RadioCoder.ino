@@ -1,29 +1,31 @@
 #include "RadioCoder.h"
+#include "ArrayParseExample.h"
 
 RadioCoder Radio;
 
+int TestVar[] = {0,0,0,0,0};
+int* p = TestVar;
+int Inst[5] = {0,100,5,20,90};
+
 void setup() {
   Serial.begin(9600);
-  int Inst[5] = {0,100,5,20,90};
+  
   String ToDecode = "0&100&5&20&90&;";
-  int AlphaMale[5];
 }
 
 void loop(){
+  
+  p[1] = 989;
   delay(2000);
   
-  //int Inst[5] = {0,100,5,20,90};
   //Radio.EncodeSent(Inst);
-  
-  int TestVar[5] = {0,0,0,0,0};
 
-  
   Serial.println("Before ReceiveDecode value of TestVar:");
   for(int i=0;i<5;i++){
-    Serial.println(TestVar[i]);
+    Serial.println(p[i]);
   }
   
-  if(Radio.ReceiveDecode(TestVar)){
+  if(Radio.ReceiveDecode(&p)){
      /*sizeof test
      Serial.println("Size of TestVar:");
      Serial.println(sizeof(TestVar));
@@ -31,8 +33,11 @@ void loop(){
      
      Serial.println("After ReceiveDecode value of TestVar:");
      for(int i=0;i<5;i++){
-        Serial.println(TestVar[i]);
+      //receivedCommands
+      Serial.println(p[i]);
+        //Serial.println(TestVar[i]);
     }
+    
     
   }
 
