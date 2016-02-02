@@ -1,12 +1,12 @@
 #include "Wire.h"
 #include "I2Cdev.h"
 #include "MPU9150_9Axis_MotionApps41.h"
-#include "sonar.h"
-#include "RadioCoder.h"
+//#include "sonar.h"
+//#include "RadioCoder.h"
 
 MPU9150 mpu;
-RadioCoder radio;
-Sonar sonar;
+//RadioCoder radio;
+//Sonar sonar;
 
 #define OUTPUT_READABLE_YAWPITCHROLL
 #define LED_PIN 13 // (Arduino is 13, Teensy is 11, Teensy++ is 6)
