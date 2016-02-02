@@ -13,7 +13,6 @@ RadioCoder Radio;
 int TestVar[] = {0,0,0,0,0};
 int* p = TestVar;
 int Inst[5] = {0,0,0,0,0};
-//String ToDecode = "0&100&5&20&90&;";
 
 void setup() {
   Serial.begin(115200);
@@ -29,12 +28,8 @@ void loop(){
   //########################################################
   #ifdef SenderActive
   
-  delay(200);
+  delay(70);
 
-  /*
-  int sensorValue = analogRead(A0);
-  Inst[1] = map(sensorValue,0,1020,0,100);
-  */
   Inst[0] = random(2);
   Inst[1] = random(101);
   Inst[2] = random(-90, 91);
@@ -42,12 +37,6 @@ void loop(){
   Inst[4] = random(-90, 91);
   
   Radio.EncodeSent(Inst);
-  /*
-  Serial.println("Inst:");
-  for(int i=0;i<5;i++){
-    Serial.println(Inst[i]);
-  }
-  */
   
   #endif
   
@@ -56,7 +45,6 @@ void loop(){
   //########################################################
   #ifdef ReaderActive
   
-  //delay(1000);
   
   if(Radio.ReceiveDecode(&p)){
      Serial.println("Received values:");
@@ -65,17 +53,10 @@ void loop(){
     }  
   Serial.println("-------------------");
 
-  /*
-    int angle = map(p[1], 0, 100, 0, 180);
-    myservo.write(angle);
-   */
   }
   
  else{
-  /*
-  Serial.println("No value received");
-  Serial.println("-------------------");
-  */
+  //No value has been received
  }
   #endif
 

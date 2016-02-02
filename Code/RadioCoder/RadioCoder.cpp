@@ -29,44 +29,43 @@ int RadioCoder::ReceiveDecode(int** ppCommandArray){
   /*
    * This funcion reads the serialbuffer of the Arduino and extracts the commands that the sender sent over the radioshield. It stores the received values in the array that p points to
    */
-
-  /*
-  Serial.println("Serialbuffersize:");
-  Serial.println(Serial.available());
-  */
   
   if(Serial.available() > 0){
-	   //Extract the first string with commands (seperated by ';') from the Serial buffer and split it into the seperate commands 
-	   radioReceiveBuffer = Serial.readStringUntil(';');
+     //Extract the first string with commands (seperated by ';') from the Serial buffer and split it into the seperate commands 
+     radioReceiveBuffer = Serial.readStringUntil(';');
 
     //See if the recieved string is 18 characters long as it's supposed to  
     if(radioReceiveBuffer.length()!= 18){
       return 0;
     }
+
+   //Reset the variables needed to extract the commands
+   commandCount = 0;
+   prevSepatorLocation = 0;
     
    for(int possition = 0; possition<radioReceiveBuffer.length(); possition++){
-		if(radioReceiveBuffer.substring(possition, possition+1) == "&"){
+    if(radioReceiveBuffer.substring(possition, possition+1) == "&"){
 
-		  //Needed to get rit of the '&' before the last 4 commands
-		  if(prevSepatorLocation>0){
-			  prevSepatorLocation = prevSepatorLocation+1;
-		  };
+      //Needed to get rit of the '&' before the last 4 commands
+      if(prevSepatorLocation>0){
+        prevSepatorLocation = prevSepatorLocation+1;
+      };
       
-		  radioReceivedCommands[commandCount] = radioReceiveBuffer.substring(prevSepatorLocation,possition).toInt();
+      radioReceivedCommands[commandCount] = radioReceiveBuffer.substring(prevSepatorLocation,possition).toInt();
   
-		  prevSepatorLocation = possition;
-		  commandCount++;
-	   };
-	 };
+      prevSepatorLocation = possition;
+      commandCount++;
+     };
+   };
 
     //Substract 200 to the throttle, gX, gY and gZ values to make sure they consist of 3 characters, we needed it to verify the received command earlier
     for(int i=1;i<5;i++){
         radioReceivedCommands[i] -= 200;
     }
     
-	  *ppCommandArray = radioReceivedCommands;
+    *ppCommandArray = radioReceivedCommands;
   
-	  return 1;
+    return 1;
   }
   else{
     return 0;
@@ -93,6 +92,6 @@ void RadioCoder::EncodeSent(int sentCommands[5]){
   
   radioSentCommand += ";";
 
-  Serial.println(radioSentCommand);
+  Serial.print(radioSentCommand);
 };
 
