@@ -4,8 +4,8 @@
 // COM14 = sender
 // COM15 = receiver
 
-//#define SenderActive
-#define ReaderActive
+#define SenderActive
+//#define ReaderActive
 
 //Servo myservo;
 RadioCoder Radio;
@@ -13,6 +13,7 @@ RadioCoder Radio;
 int TestVar[] = {0,0,0,0,0};
 int* p = TestVar;
 int Inst[5] = {0,0,0,0,0};
+int TestCount = 0;
 
 void setup() {
   Serial.begin(115200);
@@ -28,8 +29,12 @@ void loop(){
   //########################################################
   #ifdef SenderActive
   
-  delay(70);
+  delay(10);
 
+  if(TestCount==200){
+    digitalWrite(8, LOW);
+  }
+  
   Inst[0] = random(2);
   Inst[1] = random(101);
   Inst[2] = random(-90, 91);
@@ -37,7 +42,8 @@ void loop(){
   Inst[4] = random(-90, 91);
   
   Radio.EncodeSent(Inst);
-  
+
+  TestCount++;
   #endif
   
   //########################################################
