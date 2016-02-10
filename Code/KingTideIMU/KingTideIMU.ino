@@ -32,19 +32,6 @@
 #include "RTFusionRTQF.h" 
 #include "CalLib.h"
 #include "EEPROM.h"
-#include "sonar.h"
-#include "RadioCoder.h"
-#include "Drone.h"
-#include <Servo.h>
-
-#define Engine_1_pin 3
-#define Engine_2_pin 5
-#define Engine_3_pin 6
-#define Engine_4_pin 9
-
-Drone drone(true, Engine_1_pin, Engine_2_pin, Engine_3_pin, Engine_4_pin);
-RadioCoder radio;
-Sonar sonarHeight(7);
 
 RTIMU *imu;                                           // the IMU object
 RTFusionRTQF fusion;                                  // the fusion object
@@ -52,7 +39,7 @@ RTIMUSettings settings;                               // the settings object
 
 //  DISPLAY_INTERVAL sets the rate at which results are displayed
 
-#define DISPLAY_INTERVAL  0                         // interval between pose displays
+#define DISPLAY_INTERVAL  10                         // interval between pose displays
 
 //  SERIAL_PORT_SPEED defines the speed to use for the debug serial port
 
@@ -62,11 +49,6 @@ unsigned long lastDisplay;
 unsigned long lastRate;
 bool ErrorCaught = false;
 int sampleCount;
-int Commands[] = {0,0,0,0,0};
-int* pCommands = Commands;
-int LastCommandMilli;
-int Height;
-int HeightOffset;
 
 void setup()
 {
@@ -80,6 +62,7 @@ void setup()
     
     if ((errcode = imu->IMUInit()) < 0) {
         ErrorCaught = true;
+        //Serial.print("Failed to init IMU: "); Serial.println(errcode);
     }
   
     imu->getCalibrationValid();
@@ -100,7 +83,14 @@ void setup()
     fusion.setAccelEnable(true);
     fusion.setCompassEnable(true);
 
-    HeightOffset = sonarHeight.GetHeight();
+    /*
+    Serial.println("Units:");
+    Serial.println("Pose: Roll, Pitch, Magnetic Heading (measured in degrees)");
+    Serial.println("Gyro: Rate of Roll, Pitch, and Yaw (measured in degrees per second)");
+    Serial.println("Accl: Acceleration in X, Y, and Z (measured in g's, with 1 g equal to 9.8 meters per second squared)");
+    Serial.println("Time: Timestamp (measured in milliseconds from when the MPU-9150 was initiated)");
+    Serial.println("----------------------------");
+    */
 }
 
 void loop(){
@@ -123,16 +113,6 @@ void loop(){
             lastRate = now;
         }
         if ((now - lastDisplay) >= DISPLAY_INTERVAL) {
-            //radio communication          
-            if(radio.ReceiveDecode(&pCommands)){
-              if(Commands[0]==1){ //The glove did a lockdown of the system, deactivate the drone and let it fall down
-                lockDrone();
-              }
-            } 
-            if(now - lastDisplay >= 60){
-                lockDrone();
-            }
-
             lastDisplay = now;
             RTVector3 pose = fusion.getFusionPose();
             RTVector3 gyro = imu->getGyro();
@@ -153,19 +133,13 @@ void loop(){
             float ay = accel.y();             // acceleration on the y-axis
             float az = accel.z();             // acceleration on the z-axis
             int ts = imu->getTimestamp();     // the timestamp
-            
-            /*
-            Serial.print("Pose: ");
+
+            //Serial.print("Pose: ");
             Serial.print(roll);
             Serial.print("  |  ");
             Serial.print(pitch);
             Serial.print("  |  ");
             Serial.println(hdm);
-            */
-            
-            Height = sonarHeight.GetHeight() - HeightOffset;
-            drone.WriteAllEngines(Commands[1]);
-            
             /*
             Serial.print("Gyro: ");
             Serial.print(ror);
@@ -182,14 +156,7 @@ void loop(){
             Serial.print("Time: ");
             Serial.println(ts);
             */
-            //Serial.println("----------------------------");
+            Serial.println("----------------------------");
         }
     }
 }
-void lockDrone(){ //function to lockdown the drone
-  int LockPower[4] = {0,0,0,0};
-  drone.WriteAllEngines(*LockPower);
-  while(true){
-    delay(10000);
-   }
-}   
