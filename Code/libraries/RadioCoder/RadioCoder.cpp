@@ -33,7 +33,10 @@ int RadioCoder::ReceiveDecode(int** ppCommandArray){
   if(Serial.available() > 0){
      //Extract the first string with commands (seperated by ';') from the Serial buffer and split it into the seperate commands 
      radioReceiveBuffer = Serial.readStringUntil(';');
-
+     
+     //Serial.println(radioReceiveBuffer);
+     
+    //Serial.println(radioReceiveBuffer);
     //See if the recieved string is 18 characters long as it's supposed to  
     if(radioReceiveBuffer.length()!= 18){
       return 0;
