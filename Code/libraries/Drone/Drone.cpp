@@ -50,6 +50,12 @@ void Drone::WriteEngines(int ThrottleArray[4]){
   Servo_Engine3.writeMicroseconds(ThrottleArray[2]);
   Servo_Engine4.writeMicroseconds(ThrottleArray[3]);
 }
+void Drone::WriteAllEngines(int Throttle){
+  Servo_Engine1.writeMicroseconds(Throttle);
+  Servo_Engine2.writeMicroseconds(Throttle);
+  Servo_Engine3.writeMicroseconds(Throttle);
+  Servo_Engine4.writeMicroseconds(Throttle);
+}
 void Drone::Write_X_Engines(int Throttle){
   Servo_Engine2.writeMicroseconds(Throttle);
   Servo_Engine3.writeMicroseconds(Throttle);

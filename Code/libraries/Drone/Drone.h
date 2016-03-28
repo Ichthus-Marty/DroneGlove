@@ -11,6 +11,7 @@ class Drone
     void WriteEngines(int ThrottleArray[4]);
     void Write_X_Engines(int Throttle);
     void Write_Y_Engines(int Throttle);
+    void WriteAllEngines(int Throttle);
     void ConfigEngines(int lowValue, int highValue);
   private:
     int _pinEngine1;

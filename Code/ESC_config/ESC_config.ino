@@ -10,7 +10,7 @@ Drone drone(false, Engine_1_pin, Engine_2_pin, Engine_3_pin, Engine_4_pin);
 
 void setup(){
   Serial.begin(115200);
-  drone.ConfigEngines(0, 100);
+  drone.ConfigEngines(1000, 2000);
 }
 void loop(){
   
