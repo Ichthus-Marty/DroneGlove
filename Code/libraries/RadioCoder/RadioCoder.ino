@@ -38,7 +38,7 @@ void loop(){
   */
 
   Inst[0] = 0;
-  Inst[1] = 20;
+  Inst[1] = 65;
   Inst[2] = 0;
   Inst[3] = 0;
   Inst[4] = 0;

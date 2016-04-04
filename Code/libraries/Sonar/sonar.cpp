@@ -1,9 +1,3 @@
-/*************************************************************
-project: <type project name here>
-author: <type your name here>
-description: <type what this file does>
-*************************************************************/
-
 #include "Arduino.h"
 #include "sonar.h"
 
