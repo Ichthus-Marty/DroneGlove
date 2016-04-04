@@ -83,14 +83,12 @@ void setup()
     fusion.setAccelEnable(true);
     fusion.setCompassEnable(true);
 
-    /*
     Serial.println("Units:");
     Serial.println("Pose: Roll, Pitch, Magnetic Heading (measured in degrees)");
     Serial.println("Gyro: Rate of Roll, Pitch, and Yaw (measured in degrees per second)");
     Serial.println("Accl: Acceleration in X, Y, and Z (measured in g's, with 1 g equal to 9.8 meters per second squared)");
     Serial.println("Time: Timestamp (measured in milliseconds from when the MPU-9150 was initiated)");
     Serial.println("----------------------------");
-    */
 }
 
 void loop(){
